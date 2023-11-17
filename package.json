@@ -1,0 +1,25 @@
+{
+  "name": "@your-name/your-package-name",
+  "description": "Description of your action...",
+  "author": "Your Name <your@email.example.com>",
+  "license": "MIT",
+  "readme": "README.md",
+  "main": "index.js",
+  "scripts": {
+    "build": "bun build index.ts --target=node --outfile=dist/index.js",
+    "check": "biome format . && biome check .",
+    "fix": "biome format --write . && biome check --apply-unsafe ."
+  },
+  "dependencies": {
+    "@actions/core": "^1.10.0",
+    "@actions/exec": "^1.1.1",
+    "@actions/github": "^5.1.1",
+    "@octokit/rest": "^20.0.1",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.1.1",
+    "@types/node": "^20.5.9",
+    "typescript": "^5.2.2"
+  }
+}

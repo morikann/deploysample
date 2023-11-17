@@ -1,0 +1,28 @@
+name: Release
+run-name: Release ${{ inputs.version }}
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        type: string
+        description: 'Version name of the new release.'
+        required: true
+
+jobs:
+  new:
+    name: New Release
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: '1.0.0'
+
+      - uses: yumemi-inc/action-release-action@v2
+        with:
+          version: '${{ inputs.version }}'
+          build-command: 'bun install --frozen-lockfile && bun run build'
